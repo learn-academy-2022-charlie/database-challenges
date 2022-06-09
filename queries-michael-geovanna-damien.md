@@ -565,7 +565,6 @@ LIMIT 1
 
 "Holy See (Vatican City State)"
 
-
 Which is the smallest country by population? (HINT: 50)?
 
 Select name, population
