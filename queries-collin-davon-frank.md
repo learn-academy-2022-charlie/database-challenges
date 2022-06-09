@@ -64,9 +64,36 @@ ORDER BY lifeexpectancy DESC
 LIMIT 15  -->
 
 Which five countries have the lowest population density (density = population / surfacearea)? (HINT: starts with Greenland)
+<!-- SELECT name, population, surfacearea,
+population / surfacearea AS density
+FROM country
+where population > 0
+ORDER BY density asc
+limit 5 -->
+
 Which countries have the highest population density?(HINT: starts with Macao)
-Which is the smallest country by area? (HINT: .4)
+
+<!-- SELECT name, population, surfacearea,
+population / surfacearea AS density
+FROM country
+where population > 0
+ORDER BY density desc
+limit 5 -->
+
+Which is the smallest country by area? (HINT: .4) Holy See (Vatican City State)
+
+<!-- SELECT name, surfacearea
+FROM country
+ORDER BY surfacearea asc
+limit 1 -->
+
 Which is the smallest country by population? (HINT: 50)?
+<!-- SELECT name, population
+FROM country
+where population > 0
+ORDER BY population asc 
+limit 1 -->
+
 Which is the biggest country by area? (HINT: 1.70754e+07)
 Which is the biggest country by population? (HINT: 1277558000)
 Who is the most influential head of state measured by population? (HINT: Jiang Zemin)
