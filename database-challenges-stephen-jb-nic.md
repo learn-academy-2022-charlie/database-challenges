@@ -121,17 +121,66 @@ LIMIT 1
 
 Subqueries: WITH
 Of the countries with the top 10 gnp, which has the smallest population? (HINT: Canada)
+ 
+ WITH highest_gnp AS 
+(SELECT name, gnp, population
+
+FROM country
+WHERE population > 0
+AND gnp > 0
+ORDER by gnp DESC
+LIMIT 10)
+SELECT name, population, gnp
+FROM highest_gnp
+ORDER BY population ASC
+LIMIT 1
 
 Of the 10 least populated countries with permament residents (a non-zero population), which has the largest surfacearea? (HINT: Svalbard and Jan Mayen)
+
+WITH least_population AS (
+SELECT name, population, surfacearea
+FROM country
+WHERE population != 0
+ORDER BY population ASC
+LIMIT 10
+)
+SELECT name, population, surfacearea
+FROM least_population
+ORDER BY surfacearea DESC
+LIMIT 1
 
 Aggregate Functions: GROUP BY
 Which region has the highest average gnp? (HINT: North America)
 
+
+SELECT region, AVG(gnp)
+FROM country
+GROUP BY region
+ORDER BY AVG(gnp) DESC
+LIMIT 1
+
 Who is the most influential head of state measured by surface area? (HINT: Elisabeth II)
+
+SELECT headofstate, COUNT(surfacearea)
+FROM country
+GROUP BY headofstate
+ORDER BY COUNT(surfacearea) DESC
+LIMIT 1
 
 What is the average life expectancy for all continents?
 
+SELECT continent, AVG(lifeexpectancy)
+FROM country
+GROUP BY continent 
+ORDER BY AVG(lifeexpectancy) 
+
 What are the most common forms of government? (HINT: use count(\*))
+
+SELECT governmentform, COUNT(*)
+FROM country
+GROUP BY governmentform
+ORDER BY count DESC
+LIMIT 1
 
 How many countries are in North America?
 
