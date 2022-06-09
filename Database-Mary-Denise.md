@@ -70,11 +70,35 @@ Which five countries have the lowest population density (density = population / 
 
 Which countries have the highest population density?(HINT: starts with Macao)
 Which is the smallest country by area? (HINT: .4)
+
+SELECT name,surfacearea
+From country
+Order by surfacearea asc
+
 Which is the smallest country by population? (HINT: 50)?
+SELECT name,population
+From country
+Where population > 0
+Order by population asc
+
 Which is the biggest country by area? (HINT: 1.70754e+07)
+SELECT name,surfacearea
+From country
+Order by surfacearea desc
+
 Which is the biggest country by population? (HINT: 1277558000)
+
+SELECT name,population
+From country
+Order by population desc
+
 Who is the most influential head of state measured by population? (HINT: Jiang Zemin)
 Subqueries: WITH
+
+SELECT name, population , headofstate
+From country
+Order by population desc
+
 Of the countries with the top 10 gnp, which has the smallest population? (HINT: Canada)
 Of the 10 least populated countries with permament residents (a non-zero population), which has the largest surfacearea? (HINT: Svalbard and Jan Mayen)
 Aggregate Functions: GROUP BY
