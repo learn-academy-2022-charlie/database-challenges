@@ -91,15 +91,97 @@ LIMIT 15
 ```
 
 Which fifteen countries have the highest life expectancy? (HINT: starts with Andorra, ends with Spain)
+```
+SELECT name, lifeexpectancy
+FROM country
+WHERE lifeexpectancy IS NOT NULL
+ORDER BY lifeexpectancy DESC
+LIMIT 15
+```
 
 
 Which five countries have the lowest population density (density = population / surfacearea)? (HINT: starts with Greenland)
+
+```
+SELECT name, population,
+population / surfacearea AS density 
+FROM country
+WHERE population > 0
+ORDER BY density
+
+```
+
+
+
 Which countries have the highest population density?(HINT: starts with Macao)
+
+```
+SELECT name, population,
+population / surfacearea AS density 
+FROM country
+WHERE population > 0
+ORDER BY density DESC
+```
+
+
+
+
 Which is the smallest country by area? (HINT: .4)
+
+```
+SELECT name, surfacearea
+FROM country
+ORDER BY surfacearea 
+
+
+```
+
+
+
 Which is the smallest country by population? (HINT: 50)?
+
+```
+SELECT name, population
+FROM country
+WHERE population > 0
+ORDER BY population
+
+```
+
+
+
 Which is the biggest country by area? (HINT: 1.70754e+07)
+
+```
+SELECT name, surfacearea
+FROM country
+ORDER BY surfacearea DESC
+LIMIT 1
+```
+
+
+
 Which is the biggest country by population? (HINT: 1277558000)
+```
+SELECT name, population 
+FROM country
+ORDER BY population DESC
+LIMIT 1
+```
+
+
 Who is the most influential head of state measured by population? (HINT: Jiang Zemin)
+
+```
+SELECT name, population, headofstate
+FROM country
+ORDER BY population DESC
+limit 1
+
+```
+
+
+
 Subqueries: WITH
 Of the countries with the top 10 gnp, which has the smallest population? (HINT: Canada)
 Of the 10 least populated countries with permament residents (a non-zero population), which has the largest surfacearea? (HINT: Svalbard and Jan Mayen)
