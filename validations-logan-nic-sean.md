@@ -37,9 +37,34 @@ it 'it will throw an error if username is less than 5 characters' do
 ```
 
 As a developer, I need each username to be unique.
+```
+it 'it will throw an error if username is not unique' do
+          Account.create username:'johndoe77', password:'mysterydude27', email:'johndoe@gmail.com'
+          user1 = Account.create username:'johndoe77', password:'mysterydude27', email:'johndoe@gmail.com'
+            expect(user1.errors[:username]).to_not be_empty
+          end
+          validates :username, uniqueness: true
+```
 As a developer, I need each password to be at least 6 characters long.
+
+```
+it 'it will throw an error if password is less than 6 characters' do
+            user1 = Account.create username:'johndoe77', password:'five', email:'johndoe@gmail.com'
+              expect(user1.errors[:password]).to_not be_empty
+end
+validates :password, length:{minimum: 6}
+```
 As a developer, I need each password to be unique.
+```
+it 'it will throw an error if password is not unique' do
+              Account.create username:'johndoe7', password:'mysterydude27', email:'johndoe@gmail.com'
+              user1 = Account.create username:'johndoe77', password:'mysterydude27', email:'johndoe@gmail.com'
+                expect(user1.errors[:password]).to_not be_empty
+              end
+              validates :username, :password, uniqueness: true
+```
 As a developer, I want my Account model to have many associated Addresses.
+
 As a developer, I want Address to have street_number, street_name, city, state, and zip attributes. The street_number and zip should be integers.
 As a developer, I want to validate the presence of all fields on Address.
 Stretch Challenges
